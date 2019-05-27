@@ -1,7 +1,7 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
-const AMOUNT_OF_GIFTS = 30;
+const AMOUNT_OF_GIFTS = 30; //persenter man ska samla
 
 
 class Item{
@@ -37,6 +37,7 @@ class Item{
         this.y = y;
     }
 
+    //när man går så läggs x eller y positionen till
     move(x, y){
         this.x+=x;
         this.y+=y;
@@ -44,6 +45,7 @@ class Item{
 
 }
 
+//collision
 function collision(obj1, obj2){
 
     if (obj1.x < obj2.x + obj2.width &&
@@ -55,6 +57,7 @@ function collision(obj1, obj2){
     return false;
     }
 
+//rita ut player sprites
 //var player_left = new Item("sprites/player_left.png", 100, 100);
 var player = new Item("sprites/player_down.png", 100, 100);
     player.importSprite("sprites/player_left.png", "left");
@@ -70,9 +73,9 @@ var timer = 25;
     
 var background = new Item("sprites/background.png", 0, 0);
 
-var success = new Item("sprites/success.png", 0, 0);
+var success = new Item("sprites/success.png", 0, 0); //skriv ut success på skärmen när man vinner
 
-var failure = new Item("sprites/failure.png", 0, 0);
+var failure = new Item("sprites/failure.png", 0, 0); //skriv fail
 
 var gamerunning = true;
 
@@ -88,6 +91,7 @@ function startGame(){
         
 
     }
+    //genererar slummessig position
     function genrateRandomPos(){
         return{
             x: Math.floor(Math.random() * (canvas.width-60)),
@@ -109,7 +113,8 @@ function render(){
         }
     }        
     
-
+    //går genom piltangenterna
+    //när player.move går vämnster eller höger så blir det (1.5, 0) eller (-1.5, 0) eftersom (x, y) den går x position
     if (keysDown[39]){
         player.move(1.5, 0)
         player.currentSprite = player.getSprite("right");
