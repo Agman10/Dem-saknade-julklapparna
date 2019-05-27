@@ -114,7 +114,7 @@ function render(){
     }        
     
     //går genom piltangenterna
-    //när player.move går vämnster eller höger så blir det (1.5, 0) eller (-1.5, 0) eftersom (x, y) den går x position
+    //när player.move går vänster eller höger så blir det (1.5, 0) eller (-1.5, 0) eftersom (x, y) den går x position
     if (keysDown[39]){
         player.move(1.5, 0)
         player.currentSprite = player.getSprite("right");
